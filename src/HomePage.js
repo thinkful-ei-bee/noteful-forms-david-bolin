@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import NotefulContext from './NotefulContext'
 
 class HomePage extends React.Component {

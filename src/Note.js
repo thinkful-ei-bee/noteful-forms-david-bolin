@@ -1,6 +1,5 @@
 import React from 'react';
-import HomePage from './HomePage';
-import {Route,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 
 function Note(props) {

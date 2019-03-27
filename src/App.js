@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route,Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import HomePage from './HomePage'
 import FolderList from './FolderList'
 import NoteList from './NoteList'
@@ -16,6 +16,12 @@ class App extends React.Component {
       STORE:STORE,
       fromOrigin: true
     }
+  }
+  
+  componentDidMount() {
+    fetch('http://localhost:9090/folders')
+      .then (res => res.json())
+      .then (res => console.log(res));
   }
 
    changeOrigin = (boolean) => {

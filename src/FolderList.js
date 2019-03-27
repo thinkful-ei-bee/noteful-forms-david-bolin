@@ -1,7 +1,4 @@
 import React from 'react';
-import HomePage from './HomePage'
-import {Route,Link} from 'react-router-dom';
-import STORE from './STORE'
 import Folder from './Folder'
 import NotefulContext from './NotefulContext'
 

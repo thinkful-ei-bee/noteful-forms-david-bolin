@@ -30,6 +30,7 @@ class App extends React.Component {
       .then (res => {
         if (res.ok) {
           console.log('delete worked');
+          this.props.history.push('/');
           const newNotes = this.state.STORE.notes.filter(note => note.id !== noteId);
           this.setState({
             STORE: {
@@ -37,7 +38,6 @@ class App extends React.Component {
               folders: [...this.state.STORE.folders]
             }
           })
-          this.props.history.push('/');
         }
       });
   }

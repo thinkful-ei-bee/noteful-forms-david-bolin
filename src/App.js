@@ -6,6 +6,7 @@ import NoteList from './NoteList'
 import NotePage from './NotePage'
 import './App.css';
 import NotefulContext from './NotefulContext'
+import {withRouter} from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -20,6 +21,27 @@ class App extends React.Component {
     }
   }
   
+  handleDelete = (noteId) => {
+
+    fetch(`http://localhost:9090/notes/${noteId}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' }, 
+      })
+      .then (res => {
+        if (res.ok) {
+          console.log('delete worked');
+          const newNotes = this.state.STORE.notes.filter(note => note.id !== noteId);
+          this.setState({
+            STORE: {
+              notes: newNotes,
+              folders: [...this.state.STORE.folders]
+            }
+          })
+          this.props.history.push('/');
+        }
+      });
+  }
+
   componentDidMount() {
     let folders;
     let notes;
@@ -53,7 +75,8 @@ class App extends React.Component {
 
   render(){
   return (
-    <NotefulContext.Provider value={{ store: this.state.STORE, fromOrigin:this.state.fromOrigin, changeOrigin:this.changeOrigin }}>
+    <NotefulContext.Provider value={{ store: this.state.STORE, fromOrigin:this.state.fromOrigin, changeOrigin:this.changeOrigin,
+    handleDelete: this.handleDelete }}>
     <main className='App'>
 
     <section>
@@ -78,4 +101,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

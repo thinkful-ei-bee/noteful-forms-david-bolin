@@ -4,7 +4,8 @@ const NotefulContext = React.createContext({
 store:{
 
 },
-fromOrigin:true
+fromOrigin:true,
+handleDelete: () => {}
 
 
 })

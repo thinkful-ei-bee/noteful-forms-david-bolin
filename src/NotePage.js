@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 import NotefulContext from './NotefulContext'
@@ -25,6 +26,7 @@ if(this.context.fromOrigin !== true){
         <h2>{NOTE.name}</h2>
         <p>{date} </p>
         <p>{NOTE.content}</p>
+        <button onClick={() => this.context.handleDelete(NOTE.id)}>Delete</button>
         </li>
       </ul>
     );
@@ -39,6 +41,7 @@ else{
       <h2>{NOTE.name}</h2>
       <p>{date} </p>
       <p>{NOTE.content}</p>
+      <button onClick={() => this.context.handleDelete(NOTE.id)}>Delete</button>
       </li>
     </ul>
   );

@@ -19,9 +19,26 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    let folders;
+    let notes;
+
     fetch('http://localhost:9090/folders')
       .then (res => res.json())
-      .then (res => console.log(res));
+      .then (res => {folders = res})
+      .then (
+        fetch('http://localhost:9090/notes')
+        .then (res => res.json())
+        .then (res => {notes = res})
+        .then (res => 
+          this.setState({
+            STORE: {
+              folders: folders,
+              notes: notes
+            }
+          })
+          )
+      )
+      
   }
 
    changeOrigin = (boolean) => {

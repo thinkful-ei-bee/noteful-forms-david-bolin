@@ -4,7 +4,6 @@ import HomePage from './HomePage'
 import FolderList from './FolderList'
 import NoteList from './NoteList'
 import NotePage from './NotePage'
-import STORE from './STORE'
 import './App.css';
 import NotefulContext from './NotefulContext'
 
@@ -13,7 +12,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      STORE:STORE,
+      STORE: {
+        folders: [],
+        notes: []
+      },
       fromOrigin: true
     }
   }

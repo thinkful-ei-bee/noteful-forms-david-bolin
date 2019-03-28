@@ -15,7 +15,8 @@ class App extends React.Component {
     this.state = {
       STORE: {
         folders: [],
-        notes: []
+        notes: [],
+        selected: null
       },
       fromOrigin: true
     }
@@ -76,7 +77,8 @@ class App extends React.Component {
   render(){
   return (
     <NotefulContext.Provider value={{ store: this.state.STORE, fromOrigin:this.state.fromOrigin, changeOrigin:this.changeOrigin,
-    handleDelete: this.handleDelete }}>
+    handleDelete: this.handleDelete
+     }}>
     <main className='App'>
 
     <section>
@@ -86,7 +88,7 @@ class App extends React.Component {
     </section>
 
     <section>
-     <Route path='/Folder/:id' render={() => <FolderList />} />
+     <Route path='/Folder/:id' render={(props) => <FolderList match={props.match}/>} />
      <Route path='/Folder/:id' render={(props) => <NoteList match={props.match}  />}  />
     </section>
 

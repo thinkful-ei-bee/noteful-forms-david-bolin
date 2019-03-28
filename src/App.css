@@ -37,7 +37,12 @@ a {
   border: 1px solid black;
   padding: 15px;
   list-style: none;
+  text-align: center;
   width: 265px;
+}
+
+.back-button button {
+  background-color: lightskyblue;
 }
 
 .note-info {

@@ -35,9 +35,8 @@ else{
   return (
     <ul>
         <li>
-      <button onClick={() => this.context.handleGoBack()}>Go Back</button>
-      
-      </li>
+          <button onClick={() => this.context.handleGoBack()}>Go Back</button>  
+        </li>
         <li>
       <h2>{NOTE.name}</h2>
       <p>{date} </p>

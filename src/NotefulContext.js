@@ -5,8 +5,8 @@ store:{
 
 },
 fromOrigin:true,
-handleDelete: () => {}
-
+handleDelete: () => {},
+handleGoBack: () => {}
 
 })
 

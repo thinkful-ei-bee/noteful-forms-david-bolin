@@ -7,6 +7,7 @@ import NotePage from './NotePage'
 import './App.css';
 import NotefulContext from './NotefulContext'
 import {withRouter} from 'react-router-dom';
+import AddFolder from './AddFolder';
 
 class App extends React.Component {
 
@@ -22,6 +23,10 @@ class App extends React.Component {
     }
   }
   
+  handleGoBack = () => {
+    this.props.history.goBack();
+  }
+
   handleDelete = (noteId) => {
 
     fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -77,7 +82,8 @@ class App extends React.Component {
   render(){
   return (
     <NotefulContext.Provider value={{ store: this.state.STORE, fromOrigin:this.state.fromOrigin, changeOrigin:this.changeOrigin,
-    handleDelete: this.handleDelete
+    handleDelete: this.handleDelete,
+    handleGoBack: this.handleGoBack
      }}>
     <main className='App'>
 
@@ -94,6 +100,10 @@ class App extends React.Component {
 
     <section>
       <Route path='/Note/:id' render={(props) => <NotePage match={props.match}  />} />
+    </section>
+
+    <section>
+      <Route path='/addfolder' component={AddFolder} />
     </section>
 
     </main>

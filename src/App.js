@@ -59,6 +59,12 @@ class App extends React.Component {
     });
   }
 
+  changeNewNoteContent = (str) => {
+    this.setState({
+      newNoteContent: str
+    });
+  }
+
   changeNewSingleName = (str) => {
     let message = '';
     let validity = false;
@@ -178,7 +184,8 @@ class App extends React.Component {
     changeNewSingleName: this.changeNewSingleName,
     newNoteFolder: this.state.newNoteFolder,
     changeSelectedFolder: this.changeSelectedFolder,
-    newNoteContent: this.state.newNoteContent
+    newNoteContent: this.state.newNoteContent,
+    changeNewNoteContent: this.changeNewNoteContent
      }}>
 
     <main className='App'>

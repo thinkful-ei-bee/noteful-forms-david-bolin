@@ -31,7 +31,7 @@ export default class AddNote extends React.Component {
                {dropDown}
                <p></p>
                
-               <textarea id="note-content" name="note-content" rows="15" cols="100"></textarea>
+               <textarea id="note-content" name="note-content" rows="15" cols="100" onChange={e => this.context.changeNewNoteContent(e.target.value)}></textarea>
                <p></p>
                <input type="submit" value="Add Note" className="add" disabled={!this.context.newSingleNoteValid}></input>
              </form>

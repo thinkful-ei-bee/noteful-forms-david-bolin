@@ -16,6 +16,7 @@ const NotefulContext = React.createContext({
   changeNewName: () => {},
   addFolderSubmit: () => {},
   changeNewSingleName: () => {},
+  changeNewNoteContent: () => {}
 
   })
 

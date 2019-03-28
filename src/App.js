@@ -21,12 +21,50 @@ class App extends React.Component {
       },
       fromOrigin: true,
       newNoteName: '',
+      newNoteMessage: '',
+      newNoteValid: false
     }
   }
   
   changeNewName = (str) => {
+    let message = '';
+    let validity = false;
+
+    if (str.length === 0) {
+      message = 'No name entered';
+    }
+
+    if (str.length !== 0 && this.state.STORE.folders.find(folder => folder.name === str)) {
+      message = 'Duplicate name'
+    } else if (str.length !== 0) {
+      validity = true;
+    }
     this.setState({
-      newNoteName: str
+      newNoteName: str,
+      newNoteMessage: message,
+      newNoteValid: validity
+    });
+  };
+
+  addFolderSubmit = (name) => {
+    const body = JSON.stringify({name: name});
+
+    fetch('http://localhost:9090/folders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body
+    }).then (res => {
+      if (res.ok) {
+        this.getFolders();
+        this.handleGoBack();
+        this.setState({
+          newNoteName: '',
+          newNoteMessage: '',
+          newNoteValid: false
+        });
+      }
     });
   }
 
@@ -55,7 +93,7 @@ class App extends React.Component {
       });
   }
 
-  componentDidMount() {
+  getFolders() {
     let folders;
     let notes;
 
@@ -74,7 +112,11 @@ class App extends React.Component {
             }
           })
           )
-      )
+      );
+  }
+
+  componentDidMount() {
+    this.getFolders();
       
   }
 
@@ -92,7 +134,10 @@ class App extends React.Component {
     handleDelete: this.handleDelete,
     handleGoBack: this.handleGoBack,
     changeNewName: this.changeNewName,
-    newNoteName: this.state.newNoteName
+    newNoteName: this.state.newNoteName,
+    newNoteMessage: this.state.newNoteMessage,
+    newNoteValid: this.state.newNoteValid,
+    addFolderSubmit: this.addFolderSubmit
      }}>
     <main className='App'>
 

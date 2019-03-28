@@ -1,0 +1,7 @@
+.add {
+  background-color: lightgreen;
+}
+
+button[disabled] {
+  background-color: lightgray;
+}

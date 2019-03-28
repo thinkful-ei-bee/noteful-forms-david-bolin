@@ -1,8 +1,8 @@
 import React from 'react';
 import NotefulContext from './NotefulContext'
-import './AddFolder.css';
+import './AddNote.css';
 
-export default class AddFolder extends React.Component {
+export default class AddNote extends React.Component {
 
   static contextType = NotefulContext;
 
@@ -13,10 +13,10 @@ export default class AddFolder extends React.Component {
              <button onClick={() => this.context.handleGoBack()}>Go Back</button>
           </li>
           <li>
-             <h2>Add Folder</h2>
+             <h2>Add Note</h2>
              <form>
-               <label for="foldername">Name:</label>
-               <input id="foldername" type="text" value={this.context.newNoteName} onChange={(e) => this.context.changeNewName(e.target.value)}></input>
+               <label for="note-name">Name:</label>
+               <input id="note-name" type="text" value={this.context.newNoteName} onChange={(e) => this.context.changeNewName(e.target.value)}></input>
                <button className="add" disabled={!this.context.newNoteValid} onClick={(e) => {
                  e.preventDefault(); this.context.addFolderSubmit(this.context.newNoteName)}}>Add</button>
                <p>{this.context.newNoteMessage}</p>

@@ -4,9 +4,12 @@ const NotefulContext = React.createContext({
   store: {},
   fromOrigin: true,
   newNoteName: '',
+  newNoteMessage: '',
+  newNoteValid: false,
   handleDelete: () => {},
   handleGoBack: () => {},
-  changeNewName: () => {}
+  changeNewName: () => {},
+  addFolderSubmit: () => {}
 
   })
 

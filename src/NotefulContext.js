@@ -1,13 +1,13 @@
 import React from 'react'
 
 const NotefulContext = React.createContext({
-store:{
+  store: {},
+  fromOrigin: true,
+  newNoteName: '',
+  handleDelete: () => {},
+  handleGoBack: () => {},
+  changeNewName: () => {}
 
-},
-fromOrigin:true,
-handleDelete: () => {},
-handleGoBack: () => {}
+  })
 
-})
-
-export default NotefulContext
+export default NotefulContext;

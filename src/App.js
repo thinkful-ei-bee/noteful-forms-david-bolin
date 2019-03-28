@@ -19,10 +19,17 @@ class App extends React.Component {
         notes: [],
         selected: null
       },
-      fromOrigin: true
+      fromOrigin: true,
+      newNoteName: '',
     }
   }
   
+  changeNewName = (str) => {
+    this.setState({
+      newNoteName: str
+    });
+  }
+
   handleGoBack = () => {
     this.props.history.goBack();
   }
@@ -83,7 +90,9 @@ class App extends React.Component {
   return (
     <NotefulContext.Provider value={{ store: this.state.STORE, fromOrigin:this.state.fromOrigin, changeOrigin:this.changeOrigin,
     handleDelete: this.handleDelete,
-    handleGoBack: this.handleGoBack
+    handleGoBack: this.handleGoBack,
+    changeNewName: this.changeNewName,
+    newNoteName: this.state.newNoteName
      }}>
     <main className='App'>
 

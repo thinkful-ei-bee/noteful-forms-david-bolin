@@ -12,10 +12,12 @@ export default class AddFolder extends React.Component {
              <button onClick={() => this.context.handleGoBack()}>Go Back</button>
           </li>
           <li>
-             <h2>stuff</h2>
-             <p>stuff </p>
-             <p>stuff</p>
-        </li>
+             <h2>Add Folder</h2>
+             <form>
+               <label for="foldername">Name:</label>
+               <input id="foldername" type="text" value={this.context.newNoteName} onChange={(e) => this.context.changeNewName(e.target.value)}></input>
+             </form>
+         </li>
       </ul>
     );
   }

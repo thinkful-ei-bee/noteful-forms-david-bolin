@@ -9,6 +9,7 @@ import NotefulContext from './NotefulContext'
 import {withRouter} from 'react-router-dom';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
+import Error from './Error.js';
 
 class App extends React.Component {
 
@@ -221,28 +222,39 @@ class App extends React.Component {
 
     <main className='App'>
 
-    <section>
-     <Route path='/' render={() => <HomePage />} />
-     <Route exact path='/' render={() => <FolderList />}/>
-     <Route exact path='/' render={() => <NoteList />}  />
-    </section>
-
-    <section>
-     <Route path='/Folder/:id' render={(props) => <FolderList match={props.match}/>} />
-     <Route path='/Folder/:id' render={(props) => <NoteList match={props.match}  />}  />
-    </section>
-
-    <section>
-      <Route path='/Note/:id' render={(props) => <NotePage match={props.match}  />} />
-    </section>
-
-    <section>
-      <Route path='/addfolder' component={AddFolder} />
-    </section>
-
-    <section>
-      <Route path='/addnote' component={AddNote} />
-    </section>
+    <Error>
+      <section>
+      <Route path='/' render={() => <HomePage />} />
+      <Route exact path='/' render={() => <FolderList />}/>
+      <Route exact path='/' render={() => <NoteList />}  />
+      </section>
+    </Error>
+    
+    <Error>
+      <section>
+      <Route path='/Folder/:id' render={(props) => <FolderList match={props.match}/>} />
+      <Route path='/Folder/:id' render={(props) => <NoteList match={props.match}  />}  />
+      </section>
+    </Error>
+    
+    <Error>
+      <section>
+        <Route path='/Note/:id' render={(props) => <NotePage match={props.match}  />} />
+      </section>
+    </Error>
+    
+    <Error>
+      <section>
+        <Route path='/addfolder' component={AddFolder} />
+      </section>
+    </Error>
+    
+     <Error>
+      <section>
+        <Route path='/addnote' component={AddNote} />
+      </section>
+     </Error>
+    
     </main>
    </NotefulContext.Provider>
 

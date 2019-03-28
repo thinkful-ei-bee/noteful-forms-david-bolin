@@ -7,8 +7,9 @@ export default class AddNote extends React.Component {
   static contextType = NotefulContext;
 
   render() {
-  
+
     const dropDown = (
+     
       <select id="folder-name" value={this.context.store.folders[this.context.newNoteFolder].name} onChange={e => {this.context.changeSelectedFolder(e.target.value)}}>
         {this.context.store.folders.map(folder => 
           <option key={folder.id} value={folder.name}>{folder.name}</option>

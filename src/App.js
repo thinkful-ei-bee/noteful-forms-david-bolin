@@ -54,7 +54,7 @@ class App extends React.Component {
 
   changeSelectedFolder = (str) => {
     this.setState( {
-      newNoteFolder: str
+      newNoteFolder: this.state.STORE.folders.map(ele => ele.name).indexOf(str)
     });
   }
 

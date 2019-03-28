@@ -7,6 +7,14 @@ export default class AddNote extends React.Component {
   static contextType = NotefulContext;
 
   render() {
+  
+    const dropDown = (
+      <select id="folder-name" value={this.context.store.folders[this.context.newNoteFolder].name} onChange={e => {this.context.changeSelectedFolder(e.target.value)}}>
+        {this.context.store.folders.map(folder => 
+          <option key={folder.id} value={folder.name}>{folder.name}</option>
+        )}
+      </select>);
+
     return (
       <ul>
           <li className='back-button'>
@@ -15,14 +23,20 @@ export default class AddNote extends React.Component {
           <li>
              <h2>Add Note</h2>
              <form>
-               <label for="note-name">Name:</label>
-               <input id="note-name" type="text" value={this.context.newNoteName} onChange={(e) => this.context.changeNewName(e.target.value)}></input>
-               <button className="add" disabled={!this.context.newNoteValid} onClick={(e) => {
-                 e.preventDefault(); this.context.addFolderSubmit(this.context.newNoteName)}}>Add</button>
-               <p>{this.context.newNoteMessage}</p>
+               <label htmlFor="note-name">Name:</label>
+               <input id="note-name" type="text" value={this.context.newSingleNoteName} onChange={(e) => this.context.changeNewSingleName(e.target.value)}></input>
+               <p>{this.context.newSingleNoteMessage}</p>
+               <label htmlFor="folder-name">Folder:</label>
+               {dropDown}
              </form>
          </li>
       </ul>
     );
   }
 }
+
+/* 
+<button className="add" disabled={!this.context.newSingleNoteValid} onClick={(e) => {
+                 e.preventDefault(); this.context.addFolderSubmit(this.context.SingleNoteName)}}>Add</button>
+
+                */

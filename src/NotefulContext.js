@@ -6,10 +6,15 @@ const NotefulContext = React.createContext({
   newNoteName: '',
   newNoteMessage: '',
   newNoteValid: false,
+  newSingleNoteName: '',
+  newSingleNoteMessage: '',
+  newSingleNoteValid: '',
+  newNoteFolder: 0,
   handleDelete: () => {},
   handleGoBack: () => {},
   changeNewName: () => {},
-  addFolderSubmit: () => {}
+  addFolderSubmit: () => {},
+  changeNewSingleName: () => {},
 
   })
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import Note from './Note'
-import NotefulContext from './NotefulContext'
+import Note from './Note';
+import NotefulContext from './NotefulContext';
+import {Link} from 'react-router-dom';
 
 class NoteList extends React.Component  {
     
@@ -30,7 +31,9 @@ class NoteList extends React.Component  {
         <ul className="noteList">
           {newnotes}
           <li>
-            <button class="addButton">Add Note</button>
+            <Link to='/addnote'>
+            <button className="addButton">Add Note</button>
+            </Link>
           </li>
         </ul>
       </div>

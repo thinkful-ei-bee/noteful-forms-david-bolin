@@ -8,6 +8,7 @@ import './App.css';
 import NotefulContext from './NotefulContext'
 import {withRouter} from 'react-router-dom';
 import AddFolder from './AddFolder';
+import AddNote from './AddNote';
 
 class App extends React.Component {
 
@@ -22,7 +23,11 @@ class App extends React.Component {
       fromOrigin: true,
       newNoteName: '',
       newNoteMessage: '',
-      newNoteValid: false
+      newNoteValid: false,
+      newSingleNoteName: '',
+      newSingleNoteMessage: '',
+      newSingleNoteValid: false,
+      newNoteFolder: 0
     }
   }
   
@@ -35,16 +40,44 @@ class App extends React.Component {
     }
 
     if (str.length !== 0 && this.state.STORE.folders.find(folder => folder.name === str)) {
-      message = 'Duplicate name'
+      message = 'Duplicate name';
     } else if (str.length !== 0) {
       validity = true;
     }
+    
     this.setState({
       newNoteName: str,
       newNoteMessage: message,
       newNoteValid: validity
     });
   };
+
+  changeSelectedFolder = (str) => {
+    this.setState( {
+      newNoteFolder: str
+    });
+  }
+
+  changeNewSingleName = (str) => {
+    let message = '';
+    let validity = false;
+
+    if (str.length === 0) {
+      message = 'No name entered';
+    }
+
+    if (str.length !== 0 && this.state.STORE.notes.find(note => note.name === str)) {
+      message = 'Duplicate name';
+    } else if (str.length !== 0) {
+      validity = true;
+    }
+
+    this.setState({
+      newSingleNoteName: str,
+      newSingleNoteMessage: message,
+      newSingleNoteValid: validity
+    })
+  }
 
   addFolderSubmit = (name) => {
     const body = JSON.stringify({name: name});
@@ -137,8 +170,15 @@ class App extends React.Component {
     newNoteName: this.state.newNoteName,
     newNoteMessage: this.state.newNoteMessage,
     newNoteValid: this.state.newNoteValid,
-    addFolderSubmit: this.addFolderSubmit
+    addFolderSubmit: this.addFolderSubmit,
+    newSingleNoteName: this.state.newSingleNoteName,
+    newSingleNoteMessage: this.state.newSingleNoteMessage,
+    newSingleNoteValid: this.state.newSingleNoteValid,
+    changeNewSingleName: this.changeNewSingleName,
+    newNoteFolder: this.state.newNoteFolder,
+    changeSelectedFolder: this.changeSelectedFolder
      }}>
+
     <main className='App'>
 
     <section>
@@ -160,6 +200,9 @@ class App extends React.Component {
       <Route path='/addfolder' component={AddFolder} />
     </section>
 
+    <section>
+      <Route path='/addnote' component={AddNote} />
+    </section>
     </main>
    </NotefulContext.Provider>
 

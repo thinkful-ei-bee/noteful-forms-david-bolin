@@ -1,6 +1,7 @@
 import React from 'react';
-import Folder from './Folder'
-import NotefulContext from './NotefulContext'
+import Folder from './Folder';
+import NotefulContext from './NotefulContext';
+import {Link} from 'react-router-dom';
 
 class FolderList extends React.Component  {
 
@@ -19,7 +20,9 @@ class FolderList extends React.Component  {
         <ul className='folderList'>
           {folders}
           <li className='folderItem'>
-          <button class="addButton">Add Folder</button>
+            <Link to='/addfolder'>
+              <button class="addButton">Add Folder</button>
+            </Link>
           </li>
         </ul>
       </div>

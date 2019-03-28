@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom'
+import {Route} from 'react-router-dom';
 import HomePage from './HomePage'
 import FolderList from './FolderList'
 import NoteList from './NoteList'

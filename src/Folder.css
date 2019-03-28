@@ -1,7 +1,7 @@
 
 
 .selected {
-    background-color: lightblue;
+    background-color: lightskyblue;
 }
 
 .folderItem {
@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-.rightBar {
+.rightBar, .noteList {
   float: right;
   position: relative;
   list-style: none;
@@ -39,6 +39,8 @@
 }
 
 .addButton {
+  height: 25px;
+  min-width: 100px;
   background-color: lightseagreen;
   margin: auto;
 }

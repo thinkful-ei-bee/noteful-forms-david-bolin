@@ -18,7 +18,7 @@ class FolderList extends React.Component  {
       <div className='leftBar'>
         <ul className='folderList'>
           {folders}
-          <li>
+          <li className='folderItem'>
           <button class="addButton">Add Folder</button>
           </li>
         </ul>

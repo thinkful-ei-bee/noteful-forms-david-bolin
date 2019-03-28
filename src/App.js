@@ -108,6 +108,36 @@ class App extends React.Component {
     });
   }
 
+  addNoteSubmit = (name, folder, content) => {
+    
+    const note = JSON.stringify({
+      name: name,
+      folderId: this.state.STORE.folders[folder],
+      content: content
+    })
+
+    fetch('http://localhost:9090/notes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: note
+    }).then (res => {
+      if (res.ok) {
+        this.getFolders();
+        this.handleGoBack();
+        this.setState({
+          newSingleNoteName: '',
+          newSingleNoteMessage: '',
+          newSingleNoteValid: false,
+          newNoteFolder: 0,
+          newNoteContent: ''
+          
+        })
+      }
+    });
+  }
+
   handleGoBack = () => {
     this.props.history.goBack();
   }
@@ -185,7 +215,8 @@ class App extends React.Component {
     newNoteFolder: this.state.newNoteFolder,
     changeSelectedFolder: this.changeSelectedFolder,
     newNoteContent: this.state.newNoteContent,
-    changeNewNoteContent: this.changeNewNoteContent
+    changeNewNoteContent: this.changeNewNoteContent,
+    addNoteSubmit: this.addNoteSubmit
      }}>
 
     <main className='App'>

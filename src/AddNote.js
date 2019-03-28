@@ -7,14 +7,20 @@ export default class AddNote extends React.Component {
   static contextType = NotefulContext;
 
   render() {
+    let dropDown;
 
-    const dropDown = (
-     
-      <select id="folder-name" value={this.context.store.folders[this.context.newNoteFolder].name} onChange={e => {this.context.changeSelectedFolder(e.target.value)}}>
-        {this.context.store.folders.map(folder => 
-          <option key={folder.id} value={folder.name}>{folder.name}</option>
-        )}
-      </select>);
+    if (!this.context.store.folders) {
+      return <div></div>;
+    } else {
+
+      dropDown = (
+      
+        <select id="folder-name" value={this.context.store.folders[this.context.newNoteFolder].name} onChange={e => {this.context.changeSelectedFolder(e.target.value)}}>
+          {this.context.store.folders.map(folder => 
+            <option key={folder.id} value={folder.name}>{folder.name}</option>
+          )}
+        </select>);
+    }
 
     return (
       <ul>
@@ -33,7 +39,8 @@ export default class AddNote extends React.Component {
                
                <textarea id="note-content" name="note-content" rows="15" cols="100" onChange={e => this.context.changeNewNoteContent(e.target.value)}></textarea>
                <p></p>
-               <input type="submit" value="Add Note" className="add" disabled={!this.context.newSingleNoteValid}></input>
+               <button onClick={(e) => {
+                 e.preventDefault(); this.context.addNoteSubmit(this.context.newSingleNoteName, this.context.newNoteFolder, this.context.newNoteContent)}} type="submit" className="add" disabled={!this.context.newSingleNoteValid}>Add Note</button>
              </form>
          </li>
       </ul>

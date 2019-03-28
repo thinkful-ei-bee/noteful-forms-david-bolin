@@ -112,7 +112,7 @@ class App extends React.Component {
     
     const note = JSON.stringify({
       name: name,
-      folderId: this.state.STORE.folders[folder],
+      folderId: this.state.STORE.folders[folder].id,
       content: content
     })
 

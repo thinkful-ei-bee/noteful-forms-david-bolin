@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-.noteList {
+.rightBar {
   float: right;
   position: relative;
   list-style: none;
@@ -36,4 +36,9 @@
 .noteList li p {
   padding: 2%;
   position: relative;
+}
+
+.addButton {
+  background-color: lightseagreen;
+  margin: auto;
 }

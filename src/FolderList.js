@@ -15,9 +15,14 @@ class FolderList extends React.Component  {
     })
       
     return (
-      <ul className='folderList'>
-        {folders}
-      </ul>
+      <div className='leftBar'>
+        <ul className='folderList'>
+          {folders}
+          <li>
+          <button class="addButton">Add Folder</button>
+          </li>
+        </ul>
+      </div>
     );
   }
 }

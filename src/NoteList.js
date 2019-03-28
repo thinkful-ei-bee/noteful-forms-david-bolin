@@ -26,9 +26,15 @@ class NoteList extends React.Component  {
            />
       })
     return (
-      <ul className="noteList">
-        {newnotes}
-      </ul>
+      <div className="rightBar">
+        <ul className="noteList">
+          {newnotes}
+          <li>
+            <button class="addButton">Add Note</button>
+          </li>
+        </ul>
+      </div>
+      
     );
   }
 }

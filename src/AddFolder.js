@@ -15,7 +15,7 @@ export default class AddFolder extends React.Component {
           <li>
              <h2>Add Folder</h2>
              <form>
-               <label for="foldername">Name:</label>
+               <label htmlFor="foldername">Name:</label>
                <input id="foldername" type="text" value={this.context.newNoteName} onChange={(e) => this.context.changeNewName(e.target.value)}></input>
                <button className="add" disabled={!this.context.newNoteValid} onClick={(e) => {
                  e.preventDefault(); this.context.addFolderSubmit(this.context.newNoteName)}}>Add</button>

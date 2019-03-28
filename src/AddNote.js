@@ -29,6 +29,11 @@ export default class AddNote extends React.Component {
                <p>{this.context.newSingleNoteMessage}</p>
                <label htmlFor="folder-name">Folder:</label>
                {dropDown}
+               <p></p>
+               
+               <textarea id="note-content" name="note-content" rows="15" cols="100"></textarea>
+               <p></p>
+               <input type="submit" value="Add Note" className="add" disabled={!this.context.newSingleNoteValid}></input>
              </form>
          </li>
       </ul>

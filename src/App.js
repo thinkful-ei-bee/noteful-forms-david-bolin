@@ -27,7 +27,8 @@ class App extends React.Component {
       newSingleNoteName: '',
       newSingleNoteMessage: '',
       newSingleNoteValid: false,
-      newNoteFolder: 0
+      newNoteFolder: 0,
+      newNoteContent: ''
     }
   }
   
@@ -176,7 +177,8 @@ class App extends React.Component {
     newSingleNoteValid: this.state.newSingleNoteValid,
     changeNewSingleName: this.changeNewSingleName,
     newNoteFolder: this.state.newNoteFolder,
-    changeSelectedFolder: this.changeSelectedFolder
+    changeSelectedFolder: this.changeSelectedFolder,
+    newNoteContent: this.state.newNoteContent
      }}>
 
     <main className='App'>

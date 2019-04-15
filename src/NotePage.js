@@ -10,10 +10,9 @@ class NotePage extends React.Component  {
 
 
   render(){
-    const NOTE = this.context.store.notes.find(note =>{
-       return note.id === this.props.match.params.id
-      }
-    )
+    console.log(this.context.store.notes);
+    // eslint-disable-next-line eqeqeq
+    const NOTE = this.context.store.notes.find(note => note.id == this.props.match.params.id);
     
     let date = moment(NOTE.modified).format('MM-DD-YYYY HH:MM:SS');
 if(this.context.fromOrigin !== true){

@@ -18,7 +18,7 @@ if(this.context.fromOrigin !== true){
     return (
       <ul className='note-page'>
           <li className='back-button'>
-        <Link to={`/Folder/${NOTE.folderId}`}>Go Back</Link>
+        <Link to={`/Folder/${NOTE.folder_id}`}>Go Back</Link>
         </li>
           <li className='note-info'>
         <h2>{NOTE.name}</h2>

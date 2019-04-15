@@ -129,12 +129,12 @@ class App extends React.Component {
         this.getFolders();
         this.handleGoBack();
         this.setState({
-            newSingleNoteName: '',
-            newSingleNoteMessage: '',
-            newSingleNoteValid: false,
-            newNoteFolder: 0,
-            newNoteContent: ''
-          })}
+          newSingleNoteName: '',
+          newSingleNoteMessage: '',
+          newSingleNoteValid: false,
+          newNoteFolder: 0,
+          newNoteContent: ''
+          
         })
       }
     });

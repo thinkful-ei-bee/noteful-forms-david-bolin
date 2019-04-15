@@ -126,15 +126,16 @@ class App extends React.Component {
       body: note
     }).then (res => {
       if (res.ok) {
-        this.getFolders();
-        this.handleGoBack();
-        this.setState({
-          newSingleNoteName: '',
-          newSingleNoteMessage: '',
-          newSingleNoteValid: false,
-          newNoteFolder: 0,
-          newNoteContent: ''
-          
+        this.getFolders()
+          .then(() => {
+            this.handleGoBack();
+            this.setState({
+              newSingleNoteName: '',
+              newSingleNoteMessage: '',
+              newSingleNoteValid: false,
+              newNoteFolder: 0,
+              newNoteContent: ''
+          });
         })
       }
     });

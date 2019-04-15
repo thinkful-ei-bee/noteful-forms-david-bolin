@@ -20,6 +20,7 @@ class Folder extends React.Component  {
       <li key={this.props.folderid} className ={cname}>         
         <NavLink onClick={() => this.context.changeOrigin(false)} to={`/Folder/${this.props.folderid}`}>
         {this.props.folderName}</NavLink>
+        <button className="folder-delete" onClick={() => this.context.handleDeleteFolder(this.props.folderid)}>Delete</button>
       </li>
     );
   }

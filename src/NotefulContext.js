@@ -12,6 +12,7 @@ const NotefulContext = React.createContext({
   newNoteFolder: 0,
   newNoteContent: '',
   handleDelete: () => {},
+  handleDeleteFolder: () => {},
   handleGoBack: () => {},
   changeNewName: () => {},
   addFolderSubmit: () => {},

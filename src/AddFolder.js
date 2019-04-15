@@ -7,6 +7,7 @@ export default class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   render() {
+    
     return (
       <ul>
           <li className='back-button'>

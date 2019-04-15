@@ -44,3 +44,7 @@
   background-color: lightseagreen;
   margin: auto;
 }
+
+.folder-delete {
+  float: right;
+}

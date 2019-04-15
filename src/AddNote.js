@@ -48,8 +48,3 @@ export default class AddNote extends React.Component {
   }
 }
 
-/* 
-<button className="add" disabled={!this.context.newSingleNoteValid} onClick={(e) => {
-                 e.preventDefault(); this.context.addFolderSubmit(this.context.SingleNoteName)}}>Add</button>
-
-                */

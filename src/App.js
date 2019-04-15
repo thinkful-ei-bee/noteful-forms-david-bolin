@@ -143,6 +143,27 @@ class App extends React.Component {
     this.props.history.goBack();
   }
 
+  handleDeleteFolder = (folderId) => {
+    fetch(`http://localhost:9090/folders/${folderId}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' }, 
+      })
+      .then (res => {
+        if (res.ok) {
+          console.log('delete worked');
+          this.props.history.push('/');
+          const newNotes = this.state.STORE.notes.filter(note => note.folderId !== folderId);
+          const newFolders = this.state.STORE.folders.filter(folder => folder.id !== folderId);
+          this.setState({
+            STORE: {
+              notes: newNotes,
+              folders: newFolders
+            }
+          })
+        }
+      });
+  }
+
   handleDelete = (noteId) => {
 
     fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -217,7 +238,8 @@ class App extends React.Component {
     changeSelectedFolder: this.changeSelectedFolder,
     newNoteContent: this.state.newNoteContent,
     changeNewNoteContent: this.changeNewNoteContent,
-    addNoteSubmit: this.addNoteSubmit
+    addNoteSubmit: this.addNoteSubmit,
+    handleDeleteFolder: this.handleDeleteFolder
      }}>
 
     <main className='App'>

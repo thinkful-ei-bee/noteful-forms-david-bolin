@@ -11,7 +11,8 @@ class Folder extends React.Component  {
   render(){
     let cname = 'folderItem';
     if (this.props.match) {
-      if (this.props.match.params.id === this.props.folderid) {
+      // eslint-disable-next-line eqeqeq
+      if (this.props.match.params.id == this.props.folderid) {
       cname = 'folderItem selected';
       }
     }

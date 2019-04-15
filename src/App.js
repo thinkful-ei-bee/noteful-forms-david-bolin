@@ -150,7 +150,6 @@ class App extends React.Component {
       })
       .then (res => {
         if (res.ok) {
-          console.log('delete worked');
           this.props.history.push('/');
           // eslint-disable-next-line eqeqeq
           const newNotes = this.state.STORE.notes.filter(note => note.folder_id != folderId);
@@ -174,7 +173,6 @@ class App extends React.Component {
       })
       .then (res => {
         if (res.ok) {
-          console.log('delete worked');
           this.props.history.push('/');
           const newNotes = this.state.STORE.notes.filter(note => note.id !== noteId);
           this.setState({

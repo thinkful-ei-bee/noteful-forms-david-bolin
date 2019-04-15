@@ -90,7 +90,7 @@ class App extends React.Component {
   addFolderSubmit = (name) => {
     const body = JSON.stringify({name: name});
 
-    fetch('http://localhost:9090/folders', {
+    fetch('http://localhost:8000/api/folders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -113,11 +113,11 @@ class App extends React.Component {
     
     const note = JSON.stringify({
       name: name,
-      folderId: this.state.STORE.folders[folder].id,
+      folder_id: this.state.STORE.folders[folder].id,
       content: content
     })
 
-    fetch('http://localhost:9090/notes', {
+    fetch('http://localhost:8000/api/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -144,7 +144,7 @@ class App extends React.Component {
   }
 
   handleDeleteFolder = (folderId) => {
-    fetch(`http://localhost:9090/folders/${folderId}`, {
+    fetch(`http://localhost:8000/api/folders/${folderId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })
@@ -166,7 +166,7 @@ class App extends React.Component {
 
   handleDelete = (noteId) => {
 
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })
@@ -189,11 +189,11 @@ class App extends React.Component {
     let folders;
     let notes;
 
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
       .then (res => res.json())
       .then (res => {folders = res})
       .then (
-        fetch('http://localhost:9090/notes')
+        fetch('http://localhost:8000/api/notes')
         .then (res => res.json())
         .then (res => {notes = res})
         .then (res => 
@@ -204,8 +204,14 @@ class App extends React.Component {
             }
           })
           )
-      );
-  }
+          .catch(err => this.setState(
+            {error: err}
+            )
+          )
+      .catch(err => this.setState(
+        {error: err}
+      )));
+    }
 
   componentDidMount() {
     this.getFolders();

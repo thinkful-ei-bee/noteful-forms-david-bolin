@@ -152,8 +152,10 @@ class App extends React.Component {
         if (res.ok) {
           console.log('delete worked');
           this.props.history.push('/');
-          const newNotes = this.state.STORE.notes.filter(note => note.folderId !== folderId);
-          const newFolders = this.state.STORE.folders.filter(folder => folder.id !== folderId);
+          // eslint-disable-next-line eqeqeq
+          const newNotes = this.state.STORE.notes.filter(note => note.folder_id != folderId);
+          // eslint-disable-next-line eqeqeq
+          const newFolders = this.state.STORE.folders.filter(folder => folder.id != folderId);
           this.setState({
             STORE: {
               notes: newNotes,

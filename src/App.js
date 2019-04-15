@@ -10,6 +10,7 @@ import {withRouter} from 'react-router-dom';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
 import Error from './Error.js';
+import config from './config';
 
 class App extends React.Component {
 
@@ -90,7 +91,7 @@ class App extends React.Component {
   addFolderSubmit = (name) => {
     const body = JSON.stringify({name: name});
 
-    fetch('http://localhost:8000/api/folders', {
+    fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -117,7 +118,7 @@ class App extends React.Component {
       content: content
     })
 
-    fetch('http://localhost:8000/api/notes', {
+    fetch(`${config.API_ENDPOINT}/api/notes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -144,7 +145,7 @@ class App extends React.Component {
   }
 
   handleDeleteFolder = (folderId) => {
-    fetch(`http://localhost:8000/api/folders/${folderId}`, {
+    fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })
@@ -167,7 +168,7 @@ class App extends React.Component {
 
   handleDelete = (noteId) => {
 
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })
@@ -189,11 +190,11 @@ class App extends React.Component {
     let folders;
     let notes;
 
-    fetch('http://localhost:8000/api/folders')
+    fetch(`${config.API_ENDPOINT}/api/folders`)
       .then (res => res.json())
       .then (res => {folders = res})
       .then (
-        fetch('http://localhost:8000/api/notes')
+        fetch(`${config.API_ENDPOINT}/api/notes`)
         .then (res => res.json())
         .then (res => {notes = res})
         .then (res => 

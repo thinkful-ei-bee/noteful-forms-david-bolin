@@ -10,12 +10,9 @@ class NoteList extends React.Component  {
   render(){
     let NOTES =null;
     if(this.props.match !== undefined){
-     NOTES = this.context.store.notes.filter(note =>{
-       return note.folderId === this.props.match.params.id
-      }
-    )
-    }
-    else{
+     // eslint-disable-next-line eqeqeq
+     NOTES = this.context.store.notes.filter(note => note.folder_id == this.props.match.params.id)
+    } else {
       NOTES = this.context.store.notes;
     }
 

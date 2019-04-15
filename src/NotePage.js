@@ -10,7 +10,6 @@ class NotePage extends React.Component  {
 
 
   render(){
-    console.log(this.context.store.notes);
     // eslint-disable-next-line eqeqeq
     const NOTE = this.context.store.notes.find(note => note.id == this.props.match.params.id);
     

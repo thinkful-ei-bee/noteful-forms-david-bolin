@@ -126,14 +126,17 @@ class App extends React.Component {
       body: note
     }).then (res => {
       if (res.ok) {
-        this.getFolders();
-        this.handleGoBack();
+        this.getFolders()
+          .then(() => {
+            this.handleGoBack();
         this.setState({
           newSingleNoteName: '',
           newSingleNoteMessage: '',
           newSingleNoteValid: false,
           newNoteFolder: 0,
           newNoteContent: ''
+          });
+        
           
         })
       }
@@ -190,7 +193,7 @@ class App extends React.Component {
     let folders;
     let notes;
 
-    fetch(`${config.API_ENDPOINT}/api/folders`)
+    return fetch(`${config.API_ENDPOINT}/api/folders`)
       .then (res => res.json())
       .then (res => {folders = res})
       .then (
@@ -198,12 +201,12 @@ class App extends React.Component {
         .then (res => res.json())
         .then (res => {notes = res})
         .then (res => 
-          this.setState({
+          { return this.setState({
             STORE: {
               folders: folders,
               notes: notes
             }
-          })
+          }) }
           )
           .catch(err => this.setState(
             {error: err}

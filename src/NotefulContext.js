@@ -1,7 +1,10 @@
 import React from 'react'
 
 const NotefulContext = React.createContext({
-  store: {},
+  store: {
+    folders: [],
+    notes: []
+  },
   fromOrigin: true,
   newNoteName: '',
   newNoteMessage: '',

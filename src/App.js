@@ -199,8 +199,8 @@ class App extends React.Component {
     return fetch(`${config.API_ENDPOINT}/api/folders`)
       .then (res => res.json())
       .then (res => {folders = res})
-      .then (
-        fetch(`${config.API_ENDPOINT}/api/notes`)
+      .then (res => {
+        return  fetch(`${config.API_ENDPOINT}/api/notes`)
         .then (res => res.json())
         .then (res => {notes = res})
         .then (res =>
@@ -216,9 +216,11 @@ class App extends React.Component {
             {error: err}
             )
           )
+      })
+       
       .catch(err => this.setState(
         {error: err}
-      )));
+      ));
     }
 
   componentDidMount() {

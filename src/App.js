@@ -151,7 +151,7 @@ class App extends React.Component {
   }
 
   handleDeleteFolder = (folderId) => {
-    fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
+    return fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })
@@ -174,7 +174,7 @@ class App extends React.Component {
 
   handleDelete = (noteId) => {
 
-    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
+    return fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }, 
       })

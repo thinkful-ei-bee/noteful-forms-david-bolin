@@ -203,8 +203,9 @@ class App extends React.Component {
         fetch(`${config.API_ENDPOINT}/api/notes`)
         .then (res => res.json())
         .then (res => {notes = res})
-        .then (res => 
-          { return this.setState({
+        .then (res =>
+          { console.log(folders);
+            return this.setState({
             STORE: {
               folders: folders,
               notes: notes

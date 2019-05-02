@@ -204,8 +204,7 @@ class App extends React.Component {
         .then (res => res.json())
         .then (res => {notes = res})
         .then (res =>
-          { console.log(folders);
-            return this.setState({
+          { return this.setState({
             STORE: {
               folders: folders,
               notes: notes

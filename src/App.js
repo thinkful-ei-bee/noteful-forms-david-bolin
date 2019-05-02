@@ -99,13 +99,16 @@ class App extends React.Component {
       body: body
     }).then (res => {
       if (res.ok) {
-        this.getFolders();
-        this.handleGoBack();
-        this.setState({
-          newNoteName: '',
-          newNoteMessage: '',
-          newNoteValid: false
-        });
+        this.getFolders()
+          .then(() => {
+            this.handleGoBack();
+            this.setState({
+              newNoteName: '',
+              newNoteMessage: '',
+              newNoteValid: false
+             });
+          })
+        
       }
     });
   }
@@ -129,12 +132,12 @@ class App extends React.Component {
         this.getFolders()
           .then(() => {
             this.handleGoBack();
-        this.setState({
-          newSingleNoteName: '',
-          newSingleNoteMessage: '',
-          newSingleNoteValid: false,
-          newNoteFolder: 0,
-          newNoteContent: ''
+            this.setState({
+              newSingleNoteName: '',
+              newSingleNoteMessage: '',
+              newSingleNoteValid: false,
+              newNoteFolder: 0,
+              newNoteContent: ''
           });
         
           
